@@ -3,7 +3,9 @@
 A sleek, modern, single-page web utility designed to evaluate password security in real time. Built with semantic HTML5, advanced CSS custom layouts, and vanilla JavaScript, this project features an interactive strength meter, a togglable visibility button, and a premium **Glassmorphism** theme complete with animated neon scanning elements.
 
 ---
+<img width="1570" height="764" alt="Image" src="https://github.com/user-attachments/assets/d9f339c3-7025-4812-ab17-70faec5f6121" />
 
+ <br>
 ## 🚀 Features
 
 * **Real-Time Strength Evaluation:** Analyzes inputs using regular expressions based on 5 distinct security criteria:
