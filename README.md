@@ -6,7 +6,7 @@ A sleek, modern, single-page web utility designed to evaluate password security 
 
 ## 🚀 Features
 
-* **Real-Time Strength Evaluation:** Analyzes inputs using regular expressions based on 5 distinct security criteria[cite: 1]:
+* **Real-Time Strength Evaluation:** Analyzes inputs using regular expressions based on 5 distinct security criteria:
     * Numbers `[0-9]`
     * Lowercase letters `[a-z]`
     * Uppercase letters `[A-Z]`
