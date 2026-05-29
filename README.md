@@ -5,7 +5,6 @@ A sleek, modern, single-page web utility designed to evaluate password security 
 ---
 <img width="1570" height="764" alt="Image" src="https://github.com/user-attachments/assets/d9f339c3-7025-4812-ab17-70faec5f6121" />
 
- <br>
  
 ## [🚀 Live Demo]<a href="https://elyasforghani.github.io/password-strength-check/">click here</a>
 
