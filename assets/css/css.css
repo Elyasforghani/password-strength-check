@@ -1,272 +1,318 @@
-       *,
-        *::before,
-        *::after {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            min-height: 90vh;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url(../img/Screenshot\ 2025-11-28\ 111008.png);
+:root {
+    --bg: #0B1120;
+    --card: #101827;
+    --card-edge: #1E293B;
+    --cyan: #22D3EE;
+    --amber: #F59E0B;
+    --danger: #F43F5E;
+    --success: #34D399;
+    --text: #E2E8F0;
+    --muted: #64748B;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --font-body: "Inter", sans-serif;
+}
 
-        }
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.06), transparent 40%),
+        var(--bg);
+    font-family: var(--font-body);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+}
 
-        #sec1 {
-            width: 500px;
-            height: 300px;
-            margin: 100px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(14, 76, 98, 0.075);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            text-transform: capitalize;
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+/* ---------- Terminal card ---------- */
+#sec1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
 
+.box {
+    width: 420px;
+    max-width: 100%;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
 
-            >div {
+.titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #0D1526;
+    border-bottom: 1px solid var(--card-edge);
+}
 
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                display: flex;
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
 
-                flex-direction: column;
-                border: 2px solid rgba(0, 0, 255, 0.158);
-                border-radius: 10px;
-                position: relative;
+.dot-r { background: var(--danger); }
+.dot-y { background: var(--amber); }
+.dot-g { background: var(--success); }
 
-                >* {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    align-items: center;
-                    text-align: center;
-                }
+.titlebar-name {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+}
 
-                >h2 {
-                    width: 100%;
-                    height: 20%;
-                }
+.box-body {
+    padding: 28px 28px 24px;
+}
 
-                >p {
-                    width: 100%;
-                    height: 20%;
-                }
+.box-body h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
 
-                >input {
-                    width: 80%;
-                    height: 20%;
-                    outline: none;
-                    border: none;
+.subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 22px;
+}
 
-                }
+.cursor {
+    color: var(--cyan);
+    animation: blink 1s step-end infinite;
+}
 
-                >button {
-                    position: absolute;
-                    right: 60px;
-                    top: 170px;
+@keyframes blink {
+    50% { opacity: 0; }
+}
 
-                }
+/* ---------- Input row ---------- */
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0D1526;
+    border: 1px solid var(--card-edge);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    transition: border-color 0.2s ease;
+}
 
-                >.range {
-                    margin: 20px 0;
-                    padding: 5px;
-                    min-width: 0;
-                    transition: 0.3s;
-                    border-radius: 10px;
+.input-row:focus-within {
+    border-color: var(--cyan);
+}
 
-                }
-            }
+.prompt {
+    font-family: var(--font-mono);
+    color: var(--cyan);
+    font-weight: 600;
+}
 
-            #submitBtn {
-                width: 20px;
-                height: 5px;
-                position: absolute;
-                right: 10px;
-                top: 250px;
-                padding: 10px 20px;
-                margin-top: 10px;
-                cursor: pointer;
-            }
+.input-row input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+}
 
+.input-row input::placeholder {
+    color: var(--muted);
+}
 
-            #submitBtn:disabled {
-                cursor: not-allowed;
-                background-color: #ccc;
-                opacity: 0.6;
-            }
-        }
+#peekBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1;
+    padding: 4px;
+}
 
-        .strong-glow {
-            animation: pulse-glow 1.5s infinite;
-        }
+#peekBtn:hover {
+    color: var(--text);
+}
 
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 5px rgb(145, 145, 145);
-            }
+/* ---------- Strength meter ---------- */
+.meter {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
 
-            50% {
-                box-shadow: 0 0 20px rgb(152, 152, 152);
-            }
+.seg {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--card-edge);
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+}
 
-            100% {
-                box-shadow: 0 0 5px rgb(194, 194, 194);
-            }
-        }
+.meter-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    min-height: 1em;
+}
 
-        /* The main footer wrapper with Glassmorphism */
-        .footer {
-            width: 90%;
-            max-width: 1000px;
-            margin: 50px auto 20px;
-            padding: 40px 20px;
-            background: rgba(14, 76, 98, 0.15);
-            /* Matches your #sec1 theme */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            /* Safari support */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-        }
+/* ---------- Checklist ---------- */
+.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
 
-      
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            /* Thickness of your laser line */
-            /* This ensures a premium, hardware-accelerated movement */
-            will-change: left, top, background;
-            animation: glowing-line 4s linear infinite;
-        }
+.checklist li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
 
-        @keyframes glowing-line {
+.checklist li.done {
+    color: var(--text);
+}
 
-            /* PHASE 1: Top Laser Sweep (Left to Right) */
-            0% {
-                left: -100%;
-                top: 0;
-                background: linear-gradient(90deg, transparent, rgba(17, 255, 0, 0.8), transparent);
-            }
+.checklist .mark {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    width: 14px;
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
 
-            25% {
-                left: 100%;
-                top: 0;
-                background: linear-gradient(90deg, transparent, rgba(17, 255, 0, 0.8), transparent);
-            }
+.checklist li.done .mark {
+    color: var(--success);
+}
 
-            /* PHASE 2: Instant Reset to Top-Left & Color Shift to Teal */
-            26% {
-                left: 0%;
-                top: 0;
-                background: linear-gradient(90deg, transparent, rgba(13, 164, 151, 0.5), transparent);
-            }
+/* ---------- Submit ---------- */
+#submitBtn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--cyan);
+    color: #0B1120;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
 
-            /* PHASE 3: Matrix Scan Down the Body (Top to Bottom) */
-            49% {
-                left: 0%;
-                /* calc(100% - 2px) keeps the line perfectly inside the border */
-                top: calc(100% - 2px);
-                background: linear-gradient(90deg, transparent, rgba(13, 164, 151, 0.6), transparent);
-            }
+#submitBtn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(34, 211, 238, 0.35);
+}
 
-            /* PHASE 4: Instant Reset to Bottom-Left & Color Shift Back to Blue */
-            50% {
-                left: -100%;
-                top: calc(100% - 2px);
-                background: linear-gradient(90deg, transparent, rgba(17, 255, 0, 0.8), transparent);
-            }
+#submitBtn:disabled {
+    background: var(--card-edge);
+    color: var(--muted);
+    cursor: not-allowed;
+}
 
-            /* PHASE 5: Bottom Laser Sweep (Left to Right) */
-            100% {
-                left: 100%;
-                top: calc(100% - 2px);
-                background: linear-gradient(90deg, transparent, rgba(17, 255, 0, 0.8), transparent);
-            }
-        }
+/* ---------- Footer ---------- */
+.footer {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto 20px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--card-edge);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
 
-        /* Logo styling */
-        .footer .logo img {
-            width: 100px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
-        }
+.footer .logo img {
+    width: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
 
-        /* Flexbox List Layout */
-        .footer .link ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
+.footer .link ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
 
-        /* Social Buttons - Initial State */
-        .footer .link ul li a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            color: #e0e0e0;
-            text-decoration: none;
-            text-transform: capitalize;
-            font-weight: 600;
-            letter-spacing: 1px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            /* Cubic-bezier for a snappy, premium transition */
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+.footer .link ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    color: #e0e0e0;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 
-        /* SVG Icons */
-        .footer .link ul li a svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-            transition: transform 0.3s ease;
-        }
+.footer .link ul li a svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
 
-        /* Advanced Hover Effects - Neon Glow */
-        .footer .link ul li a:hover {
-            background: rgba(0, 0, 255, 0.1);
-            /* Subtle blue tint */
-            border-color: rgba(0, 0, 255, 0.4);
-            color: #fff;
-            /* Outer glow and inner shadow for depth */
-            box-shadow: 0 0 20px rgba(0, 255, 217, 0.3), inset 0 0 10px rgba(0, 0, 255, 0.1);
-            transform: translateY(-4px);
-            /* Lifts the button up */
-        }
+.footer .link ul li a:hover {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.4);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+    transform: translateY(-4px);
+}
 
-        /* Make the icon pop on hover */
-        .footer .link ul li a:hover svg {
-            transform: scale(1.2);
-        }
+.footer .link ul li a:hover svg {
+    transform: scale(1.2);
+}
 
+.footer p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
 
-        .footer p {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
+@media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+}
