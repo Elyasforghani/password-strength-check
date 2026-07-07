@@ -4,22 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/css.css">
     <title>passcheck</title>
-
 </head>
 
 <body>
     <section id="sec1">
         <div class="box">
-            <h2>check your password strengh</h2>
-            <p>try to make it blue</p>
-            <input type="password" placeholder="please insert the password">
-            <button> 🤦‍♂️</button>
-            <div class="range"></div>
-            <button id="submitBtn" disabled>Submit</button>
+            <div class="titlebar">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+                <span class="titlebar-name">passcheck.sh</span>
+            </div>
+
+            <div class="box-body">
+                <h2>check your password strength</h2>
+                <p class="subtitle">try to make it blue<span class="cursor">_</span></p>
+
+                <div class="input-row">
+                    <span class="prompt">$</span>
+                    <input id="pwInput" type="password" placeholder="type a password">
+                    <button id="peekBtn" type="button" aria-label="hold to reveal password">👁</button>
+                </div>
+
+                <div class="meter" id="meter" aria-hidden="true">
+                    <span class="seg" data-i="1"></span>
+                    <span class="seg" data-i="2"></span>
+                    <span class="seg" data-i="3"></span>
+                    <span class="seg" data-i="4"></span>
+                    <span class="seg" data-i="5"></span>
+                </div>
+                <p class="meter-label" id="meterLabel">enter a password</p>
+
+                <ul class="checklist" id="checklist">
+                    <li data-rule="len"><span class="mark">○</span> 8+ characters</li>
+                    <li data-rule="lower"><span class="mark">○</span> lowercase letter</li>
+                    <li data-rule="upper"><span class="mark">○</span> uppercase letter</li>
+                    <li data-rule="num"><span class="mark">○</span> number</li>
+                    <li data-rule="sym"><span class="mark">○</span> symbol (!@#$%^&*)</li>
+                </ul>
+
+                <button id="submitBtn" disabled>Submit</button>
+            </div>
         </div>
     </section>
+
     <footer class="footer">
         <div class="logo"><img src="assets/img/1.png" alt=""></div>
         <div class="link">
@@ -44,7 +77,6 @@
                             </path>
                         </svg>linkedin</a></li>
             </ul>
-
         </div>
         <p>© 2026 Elyas Forghani. All rights reserved.</p>
     </footer>
